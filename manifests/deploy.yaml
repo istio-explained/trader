@@ -4,7 +4,9 @@ kind: Deployment
 metadata:
   name: trader
   labels:
-    app: stock-trader
+    app: trader
+    solution: stock-trader
+    version: v1
   annotations:
     prism.subkind: Liberty
 spec:
@@ -19,11 +21,8 @@ spec:
     spec:
       containers:
       - name: trader
-#       Note: this manifests/deploy.yaml will be used when we want to deploy this directly using kubectl. 
-#             Microclimate uses the Charts folder so we can actually have both options
         image: ibmstocktrader/trader:basicregistry # Docker Hub with basic registry sign in
-        #image: mycluster.icp:8500/stock-trader/trader:latest # IBM Cloud Private
-        #image: registry.ng.bluemix.net/stock_trader/trader:latest # IBM Kubernetes Service
+#        image: linsun/trader:basicregistry
         env:
           - name: JWT_AUDIENCE
             valueFrom:
@@ -121,22 +120,6 @@ spec:
             cpu: 100m
             memory: 128Mi
 ---
-#Deploy the autoscaler
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: trader-hpa
-  labels:
-    solution: stock-trader
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: trader
-  maxReplicas: 10
-  minReplicas: 2
-  targetCPUUtilizationPercentage: 60
----
 #Deploy the service
 apiVersion: v1
 kind: Service
@@ -152,10 +135,12 @@ spec:
       protocol: TCP
       port: 9080
       targetPort: 9080
+      nodePort: 32388
     - name: https
       protocol: TCP
       port: 9443
       targetPort: 9443
+      nodePort: 32389
   selector:
     app: trader
 ---
@@ -167,8 +152,6 @@ metadata:
   labels:
     solution: stock-trader
   annotations:
-    #kubernetes.io/ingress.class: "istio"
-    #ingress.kubernetes.io/rewrite-target: /trader
     kubernetes.io/ingress.class: "nginx"
     ingress.kubernetes.io/affinity: "cookie"
     ingress.kubernetes.io/session-cookie-name: "route"
