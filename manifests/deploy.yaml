@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: trader
+  name: traderv2
   labels:
     app: trader
     solution: stock-trader
@@ -11,10 +11,15 @@ metadata:
     prism.subkind: Liberty
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: trader
+      version: v2
   template:
     metadata:
       labels:
         app: trader
+        version: v2
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9080"
