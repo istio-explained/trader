@@ -112,7 +112,7 @@ public class Summary extends HttpServlet {
 		writer.append("<!DOCTYPE html>");
 		writer.append("<html>");
 		writer.append("  <head>");
-		writer.append("    <title>Stock Trader</title>");
+		writer.append("    <title>Stock Trader v2</title>");
 		writer.append("    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
 		writer.append("  </head>");
 		writer.append("  <body>");
@@ -151,7 +151,7 @@ public class Summary extends HttpServlet {
 		}
 		writer.append("    <br/>");
 		writer.append("    <a href=\"https://github.com/IBMStockTrader\">");
-		writer.append("      <img src=\"footer.jpg\"/>");
+		writer.append("      <img src=\"footer.jpg\" width=\"534\" height=\"200\"/>");
 		writer.append("    </a>");
 		writer.append("  </body>");
 		writer.append("</html>");
