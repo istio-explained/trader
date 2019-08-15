@@ -112,12 +112,12 @@ public class ViewPortfolio extends HttpServlet {
 			logException(npe);
 		}
 
-		try {
+		/*try {
 			returnOnInvestment = portfolioClient.getPortfolioReturns("Bearer "+jwt.getRawToken(), owner);
 		} catch (Throwable t) {
 			logger.info("Unable to obtain return on investment for "+owner);
 			logException(t);
-		}
+		}*/
 
 		Writer writer = response.getWriter();
 		writer.append("<!DOCTYPE html>");
