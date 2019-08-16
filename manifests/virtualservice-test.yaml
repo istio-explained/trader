@@ -8,11 +8,15 @@ spec:
   hosts:
   - '*'
   http:
-  - match:
-    - uri:
-        prefix: /trader
-    route:
-    - destination:
-        host: trader-service
-        port:
-          number: 9080
+    - match:
+        - headers:
+            user-agent:
+              regex: '.*Firefox.*'
+      route:
+        - destination:
+            host: trader
+            subset: v2
+    - route:
+        - destination:
+            host: trader
+            subset: v1
