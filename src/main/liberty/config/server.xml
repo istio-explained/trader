@@ -37,7 +37,8 @@
 
     <ssl id="RpSSLConfig" keyStoreRef="defaultKeyStore" />
 
-    <jwtSso jwtBuilderRef="myBuilder"/>
+    <jwtSso jwtBuilderRef="myBuilder" setCookieSecureFlag="false" />
+
     <jwtBuilder id="myBuilder" keyStoreRef="defaultKeyStore" keyAlias="default" issuer="${env.JWT_ISSUER}" audiences="${env.JWT_AUDIENCE}" />
     <mpJwt id="myMpJwt" audiences="${env.JWT_AUDIENCE}" issuer="${env.JWT_ISSUER}" keyName="default" ignoreApplicationAuthMethod="false"/>
 
