@@ -14,9 +14,9 @@ spec:
               regex: '.*Firefox.*'
       route:
         - destination:
-            host: trader
+            host: trader-service
             subset: v2
     - route:
         - destination:
-            host: trader
+            host: trader-service
             subset: v1
