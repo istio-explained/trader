@@ -3,10 +3,10 @@ kind: VirtualService
 metadata:
   name: virtual-service-trader
 spec:
-  gateways:
-  - trader-gateway
   hosts:
-  - '*'
+    - '*'
+  gateways:
+    - trader-gateway
   http:
   - match:
     - headers:
@@ -17,11 +17,16 @@ spec:
     route:
     - destination:
         host: trader-service
-        subset: v2
+        subset: "v2"
+        port:
+          number: 9080
+  - match:
     - uri:
         prefix: /trader
     route:
     - destination:
         host: trader-service
-        subset: v1
+        subset: "v1"
+        port:
+          number: 9080
 
