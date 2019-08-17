@@ -8,15 +8,20 @@ spec:
   hosts:
   - '*'
   http:
-    - match:
-        - headers:
-            user-agent:
-              regex: '.*Firefox.*'
-      route:
-        - destination:
-            host: trader-service
-            subset: v2
-    - route:
-        - destination:
-            host: trader-service
-            subset: v1
+  - match:
+    - headers:
+        user-agent:
+          regex: '.*Firefox.*'
+      uri:
+        prefix: /trader
+    route:
+    - destination:
+        host: trader-service
+        subset: v2
+    - uri:
+        prefix: /trader
+    route:
+    - destination:
+        host: trader-service
+        subset: v1
+
