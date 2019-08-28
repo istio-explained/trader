@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: virtual-service-trader
+spec:
+  hosts:
+    - '*'
+  gateways:
+    - trader-gateway
+  http:
+    - route:
+        - destination:
+            host: trader-service
+            subset: "v1"
+            port:
+              number: 9080
+          weight: 80
+        - destination:
+            host: trader-service
+            subset: "v2"
+            port:
+              number: 9080
+          weight: 20
