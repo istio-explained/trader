@@ -12,22 +12,3 @@ spec:
       protocol: HTTP
     hosts:
     - "*"
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: virtual-service-trader
-spec:
-  hosts:
-    - '*'
-  gateways:
-    - trader-gateway
-  http:
-  - match:
-    - uri:
-        prefix: /trader
-    route:
-    - destination:
-        host: trader-service
-        port:
-          number: 9080
