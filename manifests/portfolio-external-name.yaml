@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: portfolio-service
+spec:
+  type: ExternalName
+  externalName: portfolio-service.portfolio.svc.cluster.local
+  ports:
+  - name: http
+    protocol: TCP
+    port: 9080
