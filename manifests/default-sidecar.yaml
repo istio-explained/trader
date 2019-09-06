@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Sidecar
+metadata:
+  name: default
+spec:
+  ingress:
+  - port:
+      number: 9080
+      protocol: HTTP
+      name: somename
+    defaultEndpoint: 127.0.0.1:9080
+  egress:
+  - hosts:
+    - "./*"
+    - "istio-system/*"
+    - "portfolio/portfolio-service.portfolio.svc.cluster.local" 
+
