@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: portfolio-service-entry
+spec:
+  hosts:
+  - "portfolio-service"
+  ports:
+  - number: 9080
+    name: http
+    protocol: http
+  resolution: DNS

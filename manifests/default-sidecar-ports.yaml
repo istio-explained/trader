@@ -10,9 +10,13 @@ spec:
       name: somename
     defaultEndpoint: 127.0.0.1:9080
   egress:
+  - port:
+      number: 9080
+      protocol: HTTP
+      name: egresshttp
+    hosts:
+    - "portfolio/*"  
   - hosts:
     - "./*"
     - "istio-system/*"
-    - "portfolio/portfolio-service.portfolio.svc.cluster.local"
- 
 
