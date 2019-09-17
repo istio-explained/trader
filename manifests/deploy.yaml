@@ -136,12 +136,12 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - name: plain
+    - name: http
       protocol: TCP
       port: 9080
       targetPort: 9080
       nodePort: 32388
-    - name: secure
+    - name: https
       protocol: TCP
       port: 9443
       targetPort: 9443
