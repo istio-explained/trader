@@ -16,4 +16,4 @@ spec:
       consistentHash:
         httpCookie:
           name: user
-          ttl: 60s
+          ttl: 300s
