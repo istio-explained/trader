@@ -140,7 +140,7 @@ public class Summary extends HttpServlet {
 			writer.append("          <th></th>");
 			writer.append("          <th>Owner</th>");
 			writer.append("          <th>Total</th>");
-			writer.append("          <th>Loyalty Level</th>");
+			//writer.append("          <th>Loyalty Level</th>");
 			writer.append("        </tr>");
 			writer.append(rows);
 			writer.append("      </table>");
@@ -217,7 +217,7 @@ public class Summary extends HttpServlet {
 
 			String owner = portfolio.getOwner();
 			double total = portfolio.getTotal();
-			String loyaltyLevel = portfolio.getLoyalty();
+			//String loyaltyLevel = portfolio.getLoyalty();
 
 			rows.append("        <tr>");
 			rows.append("          <td><input type=\"radio\" name=\"owner\" value=\""+owner+"\"");
@@ -228,7 +228,7 @@ public class Summary extends HttpServlet {
 
 			rows.append("          <td>"+owner+"</td>");
 			rows.append("          <td>$"+currency.format(total)+"</td>");
-			rows.append("          <td>"+loyaltyLevel+"</td>");
+			//rows.append("          <td>"+loyaltyLevel+"</td>");
 			rows.append("        </tr>");
 		}
 
