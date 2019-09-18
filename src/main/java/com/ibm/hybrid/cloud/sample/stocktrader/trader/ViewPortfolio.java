@@ -28,7 +28,6 @@ import java.text.NumberFormat;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.Enumeration;
 
 //CDI 1.2
 import javax.inject.Inject;
@@ -88,15 +87,6 @@ public class ViewPortfolio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String owner = request.getParameter("owner");
-
-		Enumeration<String> headers = request.getHeaderNames();
-		if (headers != null) {
-			while (headers.hasMoreElements()) {
-				String headerName = headers.nextElement(); //"Authorization" and "Cookie" are especially important headers
-				String headerValue = request.getHeader(headerName);
-				logger.info("linsun view portfolio doget " + headerName+": "+headerValue);
-			}
-		}
 
 		//JsonObject portfolio = PortfolioServices.getPortfolio(request, owner);
 		Portfolio portfolio = portfolioClient.getPortfolio("Bearer "+jwt.getRawToken(), owner);
@@ -203,15 +193,6 @@ public class ViewPortfolio extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String owner = request.getParameter("owner");
 		String submit = request.getParameter("submit");
-
-		Enumeration<String> headers = request.getHeaderNames();
-		if (headers != null) {
-			while (headers.hasMoreElements()) {
-				String headerName = headers.nextElement(); //"Authorization" and "Cookie" are especially important headers
-				String headerValue = request.getHeader(headerName);
-				logger.info("linsun view portfolio dopost " + headerName+": "+headerValue);
-			}
-		}
 
 		if (submit != null) {
 			if (submit.equals(FEEDBACK)) {
