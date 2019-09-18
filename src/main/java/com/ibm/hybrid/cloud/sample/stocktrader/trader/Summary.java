@@ -25,6 +25,7 @@ import java.math.RoundingMode;
 import java.text.NumberFormat;
 //JSR 47 Logging
 import java.util.logging.Logger;
+import java.util.Enumeration;
 
 //CDI 1.2
 import javax.inject.Inject;
@@ -102,6 +103,15 @@ public class Summary extends HttpServlet {
 		String rows = null;
 		try {
 			rows = getTableRows(request);
+
+			Enumeration<String> headers = request.getHeaderNames();
+			if (headers != null) {
+				while (headers.hasMoreElements()) {
+					String headerName = headers.nextElement(); //"Authorization" and "Cookie" are especially important headers
+					String headerValue = request.getHeader(headerName);
+					logger.info(headerName+": "+headerValue);
+				}
+			}
 		} catch (Throwable t) {
 			message = t.getMessage();
 			logger.warning(message);
