@@ -70,7 +70,7 @@ public class Login extends HttpServlet {
 		writer.append("    </form>");
 		writer.append("    <br/>");
 		writer.append("    <a href=\"https://github.com/IBMStockTrader\">");
-		writer.append("      <img src=\"footer-istio.jpg\" width=\"534\" height=\"200\"/>");
+		writer.append("      <img src=\"footer.jpg\" width=\"534\" height=\"200\"/>");
 		writer.append("    </a>");
 		writer.append("  </body>");
 		writer.append("</html>");
