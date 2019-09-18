@@ -92,7 +92,7 @@ public class ViewPortfolio extends HttpServlet {
 		Portfolio portfolio = portfolioClient.getPortfolio("Bearer "+jwt.getRawToken(), owner);
 
 		double overallTotal = 0.0;
-		String loyaltyLevel = null;
+		// String loyaltyLevel = null;
 		double balance = 0.0;
 		double commissions = 0.0;
 		int free = 0;
@@ -102,7 +102,7 @@ public class ViewPortfolio extends HttpServlet {
 
 		try {
 			overallTotal = portfolio.getTotal();
-			loyaltyLevel = portfolio.getLoyalty();
+			// loyaltyLevel = portfolio.getLoyalty();
 			balance = portfolio.getBalance();
 			commissions = portfolio.getCommissions();
 			free = portfolio.getFree();
@@ -150,10 +150,10 @@ public class ViewPortfolio extends HttpServlet {
 		writer.append("          <td>Total Portfolio Value:</td>");
 		writer.append("          <td><b>$"+currency.format(overallTotal)+"</b></td>");
 		writer.append("        </tr>");
-		writer.append("        <tr>");
-		writer.append("          <td>Loyalty Level:</td>");
-		writer.append("          <td><b>"+loyaltyLevel+"</b></td>");
-		writer.append("        </tr>");
+		// writer.append("        <tr>");
+		// writer.append("          <td>Loyalty Level:</td>");
+		// writer.append("          <td><b>"+loyaltyLevel+"</b></td>");
+		// writer.append("        </tr>");
 		writer.append("        <tr>");
 		writer.append("          <td>Account Balance:</td>");
 		writer.append("          <td><b>$"+currency.format(balance)+"</b></td>");

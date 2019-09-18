@@ -109,7 +109,7 @@ public class Summary extends HttpServlet {
 				while (headers.hasMoreElements()) {
 					String headerName = headers.nextElement(); //"Authorization" and "Cookie" are especially important headers
 					String headerValue = request.getHeader(headerName);
-					logger.info(headerName+": "+headerValue);
+					logger.info("linsun summary doget: " + headerName+": "+headerValue);
 				}
 			}
 		} catch (Throwable t) {
@@ -184,6 +184,14 @@ public class Summary extends HttpServlet {
 			} else {
 				String action = request.getParameter("action");
 				String owner = request.getParameter("owner");
+				Enumeration<String> headers = request.getHeaderNames();
+				if (headers != null) {
+					while (headers.hasMoreElements()) {
+						String headerName = headers.nextElement(); //"Authorization" and "Cookie" are especially important headers
+						String headerValue = request.getHeader(headerName);
+						logger.info("summary dopost linsun: " + headerName+": "+headerValue);
+					}
+				}
 
 				if (action != null) {
 					if (action.equals(CREATE)) {
