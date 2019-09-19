@@ -9,7 +9,6 @@ metadata:
     version: v1
   annotations:
     prism.subkind: Liberty
-#    sidecar.istio.io/rewriteAppHTTPProbers: "true"
 spec:
   replicas: 1
   selector:
@@ -24,6 +23,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9080"
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
       containers:
       - name: trader
@@ -102,22 +102,22 @@ spec:
           - containerPort: 9080
           - containerPort: 9443
         imagePullPolicy: Always
-#        readinessProbe:
-#          httpGet:
-#            path: /health/ready
-#            port: 9080
-#          initialDelaySeconds: 30
-#          periodSeconds: 15
-#          successThreshold: 1
-#          failureThreshold: 3
-#        livenessProbe:
-#          httpGet:
-#            path: /health/live
-#            port: 9080
-#          initialDelaySeconds: 60
-#          periodSeconds: 15
-#          successThreshold: 1
-#          failureThreshold: 5 # Allow a little time to exec into the pod to grab FFDCs before it's killed
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 9080
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          successThreshold: 1
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 9080
+          initialDelaySeconds: 60
+          periodSeconds: 15
+          successThreshold: 1
+          failureThreshold: 5 # Allow a little time to exec into the pod to grab FFDCs before it's killed
         resources:
           limits:
             cpu: 500m
