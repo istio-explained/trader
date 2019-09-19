@@ -12,11 +12,6 @@ spec:
     labels:
       version: "v2"
   trafficPolicy:
-    loadBalancer:
-      consistentHash:
-        httpCookie:
-          name: user
-          ttl: 60s
     connectionPool:
       tcp:
         maxConnections: 1
