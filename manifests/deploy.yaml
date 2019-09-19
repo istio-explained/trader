@@ -9,6 +9,7 @@ metadata:
     version: v1
   annotations:
     prism.subkind: Liberty
+#    sidecar.istio.io/rewriteAppHTTPProbers: "true"
 spec:
   replicas: 1
   selector:
