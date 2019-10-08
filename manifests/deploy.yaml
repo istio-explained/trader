@@ -28,7 +28,7 @@ spec:
       containers:
       - name: trader
 #        image: ibmstocktrader/trader:basicregistry # Docker Hub with basic registry sign in
-        image: linsun/trader:v2
+        image: docker.io/linsun/trader:v2
         env:
           - name: JWT_AUDIENCE
             valueFrom:
